@@ -1,7 +1,7 @@
 package com.devsuperior.hr_payroll.controller;
 
 import com.devsuperior.hr_payroll.model.Payment;
-import com.devsuperior.hr_payroll.services.PaymentService;
+import com.devsuperior.hr_payroll.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
