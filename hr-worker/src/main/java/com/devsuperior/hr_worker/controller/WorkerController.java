@@ -30,7 +30,6 @@ public class WorkerController {
     }
 
     @GetMapping(value = "{id}")
-
     private ResponseEntity<Worker> findById(@PathVariable Long id){
         logger.info("Port= " + env.getProperty("local.server.port"));
 
