@@ -22,7 +22,9 @@ public class PaymentController {
     public ResponseEntity<Payment> getPayment(@PathVariable Long workerId, @PathVariable Integer days){
         return ResponseEntity.ok(paymentService.getPayment(workerId,days));
     }
-    public ResponseEntity<Payment> getPaymentAlternative( Long workerId, @PathVariable Integer days){
+
+
+    public ResponseEntity<Payment> getPaymentAlternative(@PathVariable Long workerId, @PathVariable Integer days){
         return ResponseEntity.ok(new Payment("brann", 400.0, days));
     }
 }
