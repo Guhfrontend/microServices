@@ -4,6 +4,8 @@ import com.devsuperior.hr_worker.model.Worker;
 import com.devsuperior.hr_worker.repository.WorkerRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,17 +14,30 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.logging.Logger;
 
+@RefreshScope
 @RestController
 @RequestMapping(value = "/workers")
 public class WorkerController {
 
     private static Logger logger = Logger.getLogger(WorkerController.class.getName());
 
+  // @Value("${test.config}")
+  //private String testConfig;
+
+
     @Autowired
     private Environment env;
 
     @Autowired
     private WorkerRepository workerRepository;
+
+
+    @GetMapping(value = "/configs")
+    public ResponseEntity<Void> getConfigs() {
+
+        logger.info("CONFIG = " + env.getProperty("local.server.port"));
+        return ResponseEntity.noContent().build();
+    }
 
     @GetMapping
     private ResponseEntity<List<Worker>> findyall(){
